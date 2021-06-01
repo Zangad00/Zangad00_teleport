@@ -15,23 +15,29 @@ Citizen.CreateThread(function()
         ped = PlayerPedId()
         pedcds = GetEntityCoords(ped)
         for k,v in pairs(Zangad00) do 
-            if Vdist(v.x, v.y, v.z, pedcds) <= 0.7 then
-                teleport = true
-                if teleport == true then 
-                    if IsControlJustPressed(0, 38) then 
-                        DoScreenFadeOut(1000)
-                        SetEntityCoords(ped, v.x2, v.y2, v.z2)
-                        DoScreenFadeIn(1000)
+            if Vdist(v.x, v.y, v.z, pedcds) <= 3.1 then
+                DrawMarker(23,v.x, v.y, v.z-0.99, 0, 0, 0, 0, 0, 0, 0.7, 0.7, 0.5, 232, 180, 72, 150, 0, 0, 0, 0)
+                if Vdist(v.x, v.y, v.z, pedcds) <= 0.7 then
+                    teleport = true
+                    if teleport == true then 
+                        if IsControlJustPressed(0, 38) then 
+                            DoScreenFadeOut(1000)
+                            SetEntityCoords(ped, v.x2, v.y2, v.z2)
+                            DoScreenFadeIn(1000)
+                        end
                     end
                 end
             end
-            if Vdist(v.x2, v.y2, v.z2, pedcds)  <= 0.7 then 
-                teleport = false 
-                if teleport == false then
-                    if IsControlJustPressed(0, 38) then 
-                        DoScreenFadeOut(1000)
-                        SetEntityCoords(ped, v.x, v.y, v.z)
-                        DoScreenFadeIn(1000)
+            if Vdist(v.x2, v.y2, v.z2, pedcds)  <= 3.1 then 
+                DrawMarker(23,v.x2, v.y2, v.z2-0.99, 0, 0, 0, 0, 0, 0, 0.7, 0.7, 0.5, 232, 180, 72, 150, 0, 0, 0, 0)
+                if Vdist(v.x2, v.y2, v.z2, pedcds)  <= 0.7 then 
+                    teleport = false 
+                    if teleport == false then
+                        if IsControlJustPressed(0, 38) then 
+                            DoScreenFadeOut(1000)
+                            SetEntityCoords(ped, v.x, v.y, v.z)
+                            DoScreenFadeIn(1000)
+                        end
                     end
                 end
             end
